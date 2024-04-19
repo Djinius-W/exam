@@ -26,12 +26,18 @@ public class EmployeeController {
     /* curl sample :
     curl -i -X POST localhost:8080/employees ^
         -H "Content-type:application/json" ^
-        -d "{\"name\": \"Russel George\", \"role\": \"gardener\"}"
+        -d "{\"name\": \"Russel George\", \"role\": \"gardener\" , \"dateOfbirth\": \"10-10-1000\"}"
     */
     @PostMapping("/employees")
-    Employee newEmployee(@RequestBody Employee newEmployee){
-        return repository.save(newEmployee);
+    Employee newEmployee(@RequestBody Employee newEmployee) {
+        if (newEmployee.geeeeeeeeeeeeeeeeeeeetAge() < 18) {
+            throw new EmployeeMinorException(newEmployee.getName(), newEmployee.geeeeeeeeeeeeeeeeeeeetAge());
+        }
+        else {
+            return repository.save(newEmployee);
+        }
     }
+
 
     /* curl sample :
     curl -i localhost:8080/employees/1

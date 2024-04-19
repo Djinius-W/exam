@@ -17,6 +17,7 @@ public class Employee {
     //à changer en date...
     private String dateOfbirth ;
 
+
     public Employee(){}
 
     public Employee(String name, String role, String dateOfbirth){
@@ -56,6 +57,12 @@ public class Employee {
     public void setDateOfbirth(String dateOfbirth) {
         this.dateOfbirth = dateOfbirth;
     }
+
+    // a adapter pour un format date
+    public int geeeeeeeeeeeeeeeeeeeetAge(){
+        return 17;
+    }
+
 
     @Override
     public boolean equals(Object o){

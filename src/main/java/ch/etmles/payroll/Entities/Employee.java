@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -13,12 +14,15 @@ public class Employee {
     @GeneratedValue Long id;
     private String name;
     private String role;
+    //à changer en date...
+    private String dateOfbirth ;
 
     public Employee(){}
 
-    public Employee(String name, String role){
+    public Employee(String name, String role, String dateOfbirth){
         this.setName(name);
         this.setRole(role);
+        this.setDateOfbirth(dateOfbirth);
     }
 
     public Long getID(){
@@ -45,23 +49,33 @@ public class Employee {
         this.role = role;
     }
 
+    //à changer en date...
+    public String getDateOfbirth() {
+        return dateOfbirth;
+    }
+    public void setDateOfbirth(String dateOfbirth) {
+        this.dateOfbirth = dateOfbirth;
+    }
+
     @Override
     public boolean equals(Object o){
         if(this == o)
             return true;
         if(!(o instanceof Employee employee))
             return false;
-        return Objects.equals(this.id, employee.id) && Objects.equals(this.name, employee.name)
-                && Objects.equals(this.role, employee.role);
+        return Objects.equals(this.id, employee.id)
+                && Objects.equals(this.name, employee.name)
+                && Objects.equals(this.role, employee.role)
+                && Objects.equals(this.dateOfbirth, employee.dateOfbirth);
     }
 
     @Override
     public int hashCode(){
-        return Objects.hash(this.id, this.name, this.role);
+        return Objects.hash(this.id, this.name, this.role, this.dateOfbirth);
     }
 
     @Override
     public String toString(){
-        return "Employee{" + "id=" + this.getID() + ", name='" + this.getName() + '\'' + ", role='" + this.getRole() + '\'' + '}';
+        return "Employee{" + "id=" + this.getID() + ", name='" + this.getName() + '\'' + ", role='" + this.getRole() + '\'' + ", date of birth='" + this.getDateOfbirth() + '\''+ '}';
     }
 }
